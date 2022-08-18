@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block scripts %}
+  <script src= "{% static 'quizes/quiz.js' %}" defer></script>
+
+{% endblock scripts %}
+
+
+
+
+{% block title %}
+{{ obj.name}}
+{% endblock title %}
+
+{% block content %}
+    <h2>{{ obj.name }} Quiz </h2>
+
+    <div class="row">
+
+    <div class="text-muted col">
+        <b> Score to Pass - {{obj.required_score_to_pass }}% </b>
+    </div>
+        <div class="col text-right" id="timer-box"></div>
+    </div>
+
+<form id="quiz-form" class="mt-3 mb-3">
+  {% csrf_token %}
+  <div id="quiz-box"></div>
+    <br>
+    <br>
+  <button type="submit" class="btn btn-outline-danger" id="end-test">End Test</button>
+</form>
+
+
+{% endblock content %}
